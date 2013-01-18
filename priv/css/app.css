@@ -1,0 +1,78 @@
+body, html {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: -webkit-radial-gradient(center, ellipse cover, #226078 20%,#00324E 80%);
+	background: radial-gradient(ellipse at center center, #226078 20%, #00324E 80%) no-repeat;
+	color: #000000;
+}
+#header {
+	height: 30px;
+	width: 100%;
+	background: -webkit-linear-gradient(top, #E7E7E7, #D5D5D5); 
+	background: linear-gradient(#E7E7E7, #D5D5D5);
+	border-bottom: 1px solid #B4B4B4;
+}
+
+.msg {
+  border-radius: 4px;
+  padding: 3px;
+  margin: 10px;
+  width: 60%;
+  box-shadow: 5px 5px 20px #CCC;
+}
+.rcvd {
+  float: left;
+  background-color: #F9F9D8;
+  border: 1px solid #D7D7B6;
+}
+.sent {
+  float: right;
+  background-color: #D2E5F9;
+  border: 1px solid #AFC2D6;
+}
+.msg > div {
+  background-color: #FFFFFF;
+}
+#msg {
+  width: 60%;
+  height: 100%;
+  border: 1px solid #999999;
+}
+#send {
+  float:left;
+  height: 100%;
+  width: 100px;
+}
+.msglog {
+	width: 86%;
+	position: fixed;
+	top: 32px;
+	height: 82%;
+	overflow: auto;
+}
+.log-title {
+	height: 25px;
+	width: 99%;
+	border: 1px solid #AAA;
+	background: -webkit-linear-gradient(top, #E7E7E7, #D5D5D5); 
+	background: linear-gradient(#E7E7E7, #D5D5D5);
+}
+#smiley-box {
+	display:none; 
+	position: absolute; 
+	right: 50px; 
+	top: 45px; 
+	width: 300px; 
+	height: 250px; 
+	border: 1px solid #123456; 
+	background: #ffffff;
+	overflow-y: visible; 
+	overflow-x: hidden;
+}
+.date {
+    color: #666666;
+}
+.from {
+    color: #666666;
+}

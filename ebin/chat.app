@@ -1,0 +1,23 @@
+{application, chat,
+ [{description, "erlTalk"},
+  {vsn, "0.1"},
+  {modules, [chat_app, 
+		chat_sup, 
+		chat_channel_sup, 
+		chat_srv, 
+		chat_amqp_sup, chat_amqp_srv, 
+		chat_dict_sup, chat_dict_srv, 
+		chat_ws_sup, chat_ws_srv,
+		chat_db_sup, chat_db_srv,
+		user_dao,
+		test
+        ]},
+  {registered, []},
+  {applications, [kernel, stdlib, sasl]},
+  {env, [{server,"127.0.0.1"},
+         {port, 5672},
+         {uid,<<"guest">>},
+         {pwd,<<"guest">>},
+         {vhost,<<"/">>}]},
+  {mod, {chat_app,[]}}
+ ]}.

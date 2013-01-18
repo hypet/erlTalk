@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="css/app.css" type="text/css">
+  <style>
+	#container {
+		margin: auto 0;
+		padding-top: 0px;
+	}
+	#container2 {
+		height: 590px;
+		background: -webkit-linear-gradient(#EEEEEE, #DDDDDD) repeat scroll 0 0 transparent;
+		background: linear-gradient(#EEEEEE, #DDDDDD) repeat scroll 0 0 transparent;
+		box-shadow: 0 0 10px #464646;
+	}
+	#wrap {
+		width: 650px;
+		height: 450px;
+		margin: 0 auto;
+	}
+	#login-container {
+		float: left;
+		width: 250px;
+		height: 360px;
+		padding: 20px;
+	}
+	#reg-container {
+		float: left;
+		margin: 0 auto;
+		width: 230px;
+		height: 360px;
+		padding: 20px 20px 20px 40px;
+	}
+	#v-divider {
+		float: left;
+		width: 1px;
+		padding: 25px 0;
+		height: 80%;
+		background: -webkit-linear-gradient(#EDEDED, #AEAEAE, #EDEDED);
+		background: linear-gradient(#EDEDED, #AEAEAE, #EDEDED);
+	}
+	#h-divider {
+		width: 80%;
+		padding: 0 25px;
+		margin: 25px auto;
+		height: 1px;
+		background: -webkit-linear-gradient(left, #EDEDED, #AEAEAE, #EDEDED);
+		background: linear-gradient(90deg, #EDEDED, #AEAEAE, #EDEDED);
+	}
+	#logo {
+		color: #3AA6D0;
+		font-size: 18px;
+	}
+  </style>
+  <script src="js/jquery-1.8.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+</head>
+<body>
+<div id="container" class="row-fluid">
+	<div id="container2" class="span8 offset2">
+		<div id="wrap">
+			<div id="login-container">
+				<h3>Sign in</h3>
+				<form method="POST" enctype="mutlipart/form-data" action="/auth">
+					<label for="login">Login</label>
+					<input type="text" name="login" id="login" autofocus />
+					<label for="password">Password</label>
+					<input type="password" name="password" id="password" />
+					<button type="submit" class="btn btn-primary"/>Sign in</button>
+				</form>
+			</div>
+			<div id="v-divider"></div>
+			<div id="reg-container">
+				<h3>Register</h3>
+				<form method="POST" enctype="mutlipart/form-data" action="/register">
+					<label for="name">Name</label>
+					<input type="text" name="username" id="username" />
+					<label for="login">Login</label>
+					<input type="text" name="login" id="login" />
+					<label for="email">Email</label>
+					<input type="text" name="email" id="email" />
+					<label for="password">Password</label>
+					<input type="password" name="password" id="password" />
+					<label for="password2">Repeat password</label>
+					<input type="password" name="password2" id="password2" />
+					<div style="text-align:left;">
+						<button type="submit" class="btn btn-primary"/>Register</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row-fluid" style="text-align:center;">
+			<div id="h-divider"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

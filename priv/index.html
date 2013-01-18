@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="css/app.css" type="text/css">
+  <script src="js/jquery-1.8.1.min.js"></script>
+  <script src="js/json2.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/app.js"></script>
+  <title>Chat</title>
+  <style>
+	body, html {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		background: -webkit-radial-gradient(center, ellipse cover, #FFFFFF 20%, #DDDDDD 80%);
+		background: radial-gradient(ellipse at center center, #FFFFFF 20%, #DDDDDD 80%) no-repeat;
+		color: #000000;
+	}
+        #header {
+        position: fixed;
+        }
+	#wrap {
+		margin: auto;
+		padding: 0;
+		min-height: 100%;
+		width: 100%;
+	}
+	#msg-container {
+		clear: both;
+		display: block;
+		margin: 0;
+		padding: 0;
+		min-height: 90%;
+		width: 100%;
+	}
+	#sendbox {
+		position: fixed;
+		bottom: 0;
+		margin: 0;
+		padding: 0;
+		min-height: 10%;
+		width: 100%;
+	}
+	#contacts {
+		width: 100%;
+	}
+	#contacts-d {
+		position: fixed;
+        top: 40px;
+		right: 0;
+		width: 10%;
+	}
+  </style>
+</head>
+<body>
+<!-- Upper status line -->
+<div id="header" class="row-fluid">
+	<a id="logout" class="btn" href="/logout" style="float:right;">Logout</a>
+	<button id="smiley" class="btn" onclick="showSmileyWindow();" style="float:right;">Smiley</button>
+	<div class="btn-group" style="float: right;">
+          <button class="btn dropdown-toggle" data-toggle="dropdown">
+          me: <span id="login"></span>&nbsp;<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li>Settings</li>
+          </ul>
+        </div>
+</div>
+
+<!-- Message window -->
+<div id="wrap">
+	<div id="main-log" class="span11 msglog">
+	</div>
+	<div id="contacts-d" class="span1">
+		<input type="text" id="msgto" value="" style="width:80%"/>
+		<ul id="contacts" class="nav nav-tabs nav-stacked">
+		</ul>
+	</div>
+	<div id="sendbox" class="row-fluid">
+		<div class="span7 offset2">
+			<textarea id="msg" style="width: 100%;height: 100%;"></textarea>
+		</div>
+		<div class="span1" style="vertical-align: middle;">
+			<button id="send" class="btn btn-large" onclick="sendMsg(msg,window.curContact.h)">Send</button>
+		</div>
+	</div>
+</div>
+<!-- Contacts -->
+<div id="smiley-box"></div>
+</body>
+<html>
