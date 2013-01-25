@@ -1,4 +1,4 @@
+ebin
+deps
 *.beam
-ebin/*.beam
-deps/*.*
 *.dump
