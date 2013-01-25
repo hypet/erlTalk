@@ -94,10 +94,8 @@ handle_http(Req) ->
 
 handle('GET', [], Req) -> 
     % get session info
-    {SessionId, SessionState} = Req:session(),
+    {_SessionId, SessionState} = Req:session(),
     % check state
-    io:format("SessionId:~p~n", [SessionId]),
-    io:format("SessionState:~p~n", [SessionState]),
     case SessionState of
         [] ->
             Req:file("priv/login.html");
@@ -185,47 +183,14 @@ handle('GET', ["css", "app.css"], Req) ->
 handle('GET', ["css", "bootstrap.css"], Req) -> 
     Req:file("priv/css/bootstrap.css");
 
-handle('GET', ["css", "bootstrap-responsive.css"], Req) -> 
-    Req:file("priv/css/bootstrap-responsive.css");
-
-% ---- Mobile
-
-handle('GET', ["m", "css", "jquery.mobile-1.2.0.css"], Req) -> 
-    Req:file("priv/mobile/css/jquery.mobile-1.2.0.css");
-
-
 % ---------------------------- /\ CSS  -----------------------------------------------
 
 % ---------------------------- \/ JS libs  -----------------------------------------------
 
-handle('GET', ["js", "jquery.js"], Req) -> 
-    Req:file("priv/js/jquery-1.8.1.min.js");
-
-handle('GET', ["js", "jquery-1.8.1.min.js"], Req) -> 
-    Req:file("priv/js/jquery-1.8.1.min.js");
-
-handle('GET', ["js", "bootstrap.js"], Req) -> 
-    Req:file("priv/js/bootstrap.js");
-
-handle('GET', ["js", "json2.js"], Req) -> 
-    Req:file("priv/js/json2.js");
-
 handle('GET', ["js", "app.js"], Req) -> 
     Req:file("priv/js/app.js");
 
-% ---- Mobile
-
-handle('GET', ["m", "js", "jquery.mobile-1.2.0.js"], Req) -> 
-    Req:file("priv/mobile/js/jquery.mobile-1.2.0.js");
-
 % ---------------------------- /\ JS libs -----------------------------------------------
-
-% ---------------------------- \/ Images  -----------------------------------------------
-
-handle('GET', ["img", "bg.png"], Req) -> 
-    Req:file("priv/img/bg.png");
-
-% ---------------------------- /\ Images  -----------------------------------------------
 
 handle('POST', [], Req) -> 
     case Req:parse_post() of

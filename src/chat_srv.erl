@@ -23,10 +23,6 @@
 
 -define(SERVER,?MODULE).
 
-%% @spec (string(),integer(),binary(),binary(),binary()) -> Result
-%%         Result = {ok,pid()} | ignore | {error,Error}
-%%          Error = {already_started,pid()} | term()
-    
 start_link(Hash) ->
     Name = list_to_atom("chat_srv_" ++ Hash),
     % Don't create new process if process Name is already exists.
@@ -38,11 +34,6 @@ start_link(Hash) ->
     end,
     {ok, #state{hash = Hash}}.
 
-%% @doc Initialize. Open AMQP Connection and Channel.
-%% Declare queue and bind it to an exchange. Start consuming messages from the queue.
-%%
-%% @spec ([term()]) -> Result
-%%        Result = {ok,term ()} | ignore | {error, term()}
 init([Hash]) ->
     Channel = gen_server:call(chat_amqp_srv, {get_channel}),
     QName = list_to_binary("q" ++ Hash),
@@ -81,12 +72,6 @@ handle_cast({chat_msg, {From, _To, Payload}}, State) ->
 handle_cast(_Msg, _State) ->
     {noreply, _State}.
 
-%% @doc In gen_server handle_info/2 receives the subscribed messages
-%%
-%% @spec (InfoData::Data, #state{}) -> {noreply, #state{}}
-%%        Data = Message | ConsumeOK | term()
-%%         Message = {#'basic.deliver'{},#amqp_msg{}}
-%%         ConsumeOK = #'basic.consume_ok'{}
 handle_info(#'basic.consume_ok'{consumer_tag=Tag}, State) ->
     {noreply, State#state{c_tag=Tag}};
 
@@ -98,7 +83,7 @@ handle_info({#'basic.deliver'{},
     gen_server:cast(chat_ws_srv, {chat_msg, From, To, Payload}),
     {noreply, State};
 
-handle_info(Info, State) ->
+handle_info(_Info, State) ->
     {noreply, State}.
 
 

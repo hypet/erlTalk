@@ -8,9 +8,7 @@
 		chat_amqp_sup, chat_amqp_srv, 
 		chat_dict_sup, chat_dict_srv, 
 		chat_ws_sup, chat_ws_srv,
-		chat_db_sup, chat_db_srv,
-		user_dao,
-		test
+		user_dao
         ]},
   {registered, []},
   {applications, [kernel, stdlib, sasl]},
@@ -18,6 +16,6 @@
          {port, 5672},
          {uid,<<"guest">>},
          {pwd,<<"guest">>},
-         {vhost,<<"/">>}]},
+         {vhost,<<"/chat">>}]},
   {mod, {chat_app,[]}}
  ]}.

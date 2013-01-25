@@ -10,6 +10,7 @@ Installation
 Then to enable RabbitMQ web console run:
 
 sudo rabbitmq-plugins enable rabbitmq_management
+
 sudo /etc/init.d/rabbitmq-server restart
 
 After service restart go to http://127.0.0.1:15672/ and log in as guest/guest.

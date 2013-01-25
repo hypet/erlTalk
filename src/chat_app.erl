@@ -23,7 +23,7 @@ start() ->
                   {port, 3306},
                   {encoding, 'utf8'},
                   {user, "root"},
-                  {password, ""},
+                  {password, "root"},
                   {database, "chat"}
                  ]},
                 {p2, [
@@ -32,7 +32,7 @@ start() ->
                   {port, 3306},
                   {encoding, 'utf8'},
                   {user, "root"},
-                  {password, ""},
+                  {password, "root"},
                   {database, "chat"}
                  ]}
     ]),
@@ -50,7 +50,6 @@ start(_Type, _StartArgs) ->
                {loop, fun(Req) -> chat_ws_srv:handle_http(Req) end},
                {ws_loop, fun(Ws) -> chat_ws_srv:handle_websocket(Ws) end}
               ],
-    chat_db_sup:start_link(),
     chat_amqp_sup:start_link(),
     chat_ws_sup:start_link(Options),
     chat_dict_sup:start_link(),

@@ -53,14 +53,13 @@ start_link() ->
 %% @end
 %%--------------------------------------------------------------------
 init([]) ->
-    %% {ok, Host} = application:get_env(chat, server),
-    %% {ok, Port} = application:get_env(chat, port),
-    %% {ok, Uid} = application:get_env(chat, uid),
-    %% {ok, Pwd} = application:get_env(chat, pwd),
+    {ok, Host} = application:get_env(chat, server),
+    {ok, Port} = application:get_env(chat, port),
+    {ok, Uid} = application:get_env(chat, uid),
+    {ok, Pwd} = application:get_env(chat, pwd),
     {ok, VHost} = application:get_env(chat, vhost),
-    {ok, Connection} = amqp_connection:start(#amqp_params_network{virtual_host = VHost}),
+    {ok, Connection} = amqp_connection:start(#amqp_params_network{virtual_host = VHost, host = Host, port = Port, username = Uid, password = Pwd}),
     {ok, Channel} = amqp_connection:open_channel(Connection),
-    io:format("~p, ~p~n", [Connection, Channel]),
     {ok, #state{connection = Connection, channel = Channel}}.
 
 %%--------------------------------------------------------------------
